@@ -18,7 +18,61 @@ g {
   }
 }
 </style>
+<svg viewBox="0 0 564 320" xmlns="http://www.w3.org/2000/svg">
 
+<style>
+svg {
+  background: transparent;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+/* Logo animation */
+.logo {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeSlide 1.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+/* Name animation */
+.name {
+  opacity: 0;
+  animation: fadeText 1.5s ease forwards;
+  animation-delay: 1.5s;
+}
+
+/* Keyframes */
+@keyframes fadeSlide {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeText {
+  to {
+    opacity: 1;
+  }
+}
+</style>
+
+<!-- LOGO GROUP -->
+<g class="logo">
+    <!-- Paste your FULL original <g> logo paths here exactly -->
+</g>
+
+<!-- NAME BELOW -->
+<text 
+  x="50%" 
+  y="295" 
+  text-anchor="middle" 
+  font-size="28" 
+  font-weight="500" 
+  fill="#111111"
+  class="name">
+  Satyam Mall
+</text>
+
+</svg>
 <g stroke-width="2" fill-rule="evenodd">
 
     <!-- KEEP YOUR ORIGINAL PATHS BELOW EXACTLY AS THEY WERE -->
