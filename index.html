@@ -1,44 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Student Photos</title>
+    <title>Batch Image Loader</title>
 </head>
 <body>
 
-<h2>Image Loader</h2>
-
-Start ID: <input type="number" id="startId"><br><br>
-End ID: <input type="number" id="endId"><br><br>
-
-<button onclick="loadImages()">Load Images</button>
-
+<button onclick="loadImages()">Load 1000 Images</button>
 <div id="imageContainer"></div>
 
 <script>
 function loadImages() {
-    let start = parseInt(document.getElementById("startId").value);
-    let end = parseInt(document.getElementById("endId").value);
-
-    if (isNaN(start) || isNaN(end) || start > end) {
-        alert("Invalid range");
-        return;
-    }
-
-    if (end - start > 1000) {
-        alert("Limit range to 1000 IDs max");
-        return;
-    }
-
     let container = document.getElementById("imageContainer");
     container.innerHTML = "";
 
-    for (let id = start; id <= end; id++) {
-        let img = document.createElement("img");
-        img.src = "https://example.com/image/" + id; // replace with your own API
-        img.style.margin = "5px";
-        img.height = 80;
-        container.appendChild(img);
+    let total = 1000;
+    let batchSize = 100;
+    let current = 0;
+
+    function loadBatch() {
+        let end = Math.min(current + batchSize, total);
+
+        for (let i = current; i < end; i++) {
+            let img = document.createElement("img");
+            img.src = "https://via.placeholder.com/80?text=" + i; 
+            img.loading = "lazy";   // important
+            img.style.margin = "4px";
+            container.appendChild(img);
+        }
+
+        current = end;
+
+        if (current < total) {
+            setTimeout(loadBatch, 300); // small delay to avoid freezing
+        }
     }
+
+    loadBatch();
 }
 </script>
 
